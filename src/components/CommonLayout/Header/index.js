@@ -7,10 +7,10 @@ export default function Header({ setModal }) {
     <header className={s.header}>
       <div className={s.wrap}>
         <Link href="/">
-          <p className={s.title}>Правдивые отзывы.ру</p>
+          <p className={s.title}>Отзывы о компаниях</p>
         </Link>
         <button className={s.button} onClick={() => setModal('newReview')}>
-          написать новый отзыв
+          написать отзыв
         </button>
       </div>
     </header>
