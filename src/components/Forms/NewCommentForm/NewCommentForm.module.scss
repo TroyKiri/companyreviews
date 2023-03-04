@@ -1,0 +1,172 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 30px;
+  margin-bottom: 26px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+}
+
+.ratingError {
+  color: #de2a33;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.inputBox {
+  position: relative;
+  margin-bottom: 20px;
+
+  .input {
+    outline: none;
+    background: #ffffff;
+    border: 1px solid #d6dae1;
+    border-radius: 4px;
+    width: 100%;
+    padding: 16px 30px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    color: #000000;
+  }
+
+  .input:focus + .label,
+  .textarea:focus + .label {
+    top: -8px;
+    padding: 0 6px;
+  }
+
+  .label {
+    position: absolute;
+    top: 16px;
+    left: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #7f8a94;
+    background-color: #fff;
+    transition: 0.3s;
+
+    &.valid {
+      top: -8px;
+      padding: 0 6px;
+    }
+  }
+
+  .textarea {
+    resize: none;
+    height: 200px;
+    outline: none;
+    background: #ffffff;
+    border: 1px solid #d6dae1;
+    border-radius: 4px;
+    width: 100%;
+    padding: 16px 30px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    color: #000;
+  }
+
+  .error {
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    background: #de2a33;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .errorInput {
+    border-color: #de2a33;
+  }
+
+  .errorLabel {
+    color: #de2a33;
+  }
+}
+
+.inputBoxAuthor {
+  padding-left: 60px;
+
+  .label {
+    left: 90px;
+  }
+}
+
+.inputBoxAuthor:before {
+  content: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='25' fill='%23E2E7EC'/%3E%3Cpath d='M25.4861 26.7857H23.6806C21.0468 26.7857 18.5209 27.8205 16.6586 29.6623C14.7963 31.5042 13.75 34.0023 13.75 36.6071C13.75 36.8439 13.8451 37.071 14.0144 37.2385C14.1837 37.4059 14.4133 37.5 14.6528 37.5H34.5139C34.7533 37.5 34.9829 37.4059 35.1522 37.2385C35.3215 37.071 35.4167 36.8439 35.4167 36.6071C35.4167 34.0023 34.3704 31.5042 32.5081 29.6623C30.6457 27.8205 28.1199 26.7857 25.4861 26.7857ZM15.6097 35.7143C15.8317 33.7506 16.7775 31.9366 18.2663 30.6189C19.7551 29.3013 21.6827 28.5724 23.6806 28.5714H25.4861C27.484 28.5724 29.4115 29.3013 30.9004 30.6189C32.3892 31.9366 33.335 33.7506 33.5569 35.7143H15.6097Z' fill='white'/%3E%3Cpath d='M24.5833 25C25.8332 25 27.055 24.6334 28.0942 23.9467C29.1335 23.2599 29.9434 22.2838 30.4217 21.1418C30.9 19.9997 31.0252 18.7431 30.7813 17.5307C30.5375 16.3183 29.9356 15.2047 29.0519 14.3306C28.1681 13.4565 27.042 12.8613 25.8162 12.6201C24.5903 12.3789 23.3197 12.5027 22.165 12.9758C21.0103 13.4488 20.0233 14.2499 19.3289 15.2777C18.6345 16.3055 18.2639 17.5139 18.2639 18.75C18.2639 20.4076 18.9297 21.9973 20.1148 23.1694C21.2999 24.3415 22.9073 25 24.5833 25ZM24.5833 14.2857C25.4761 14.2857 26.3488 14.5475 27.0911 15.0381C27.8334 15.5286 28.412 16.2259 28.7536 17.0416C29.0953 17.8573 29.1847 18.755 29.0105 19.6209C28.8363 20.4869 28.4064 21.2824 27.7751 21.9067C27.1439 22.5311 26.3396 22.9563 25.4639 23.1285C24.5883 23.3008 23.6807 23.2124 22.8559 22.8745C22.0311 22.5366 21.3262 21.9644 20.8302 21.2302C20.3342 20.4961 20.0694 19.633 20.0694 18.75C20.0694 17.566 20.545 16.4305 21.3915 15.5933C22.238 14.7561 23.3862 14.2857 24.5833 14.2857Z' fill='white'/%3E%3C/svg%3E%0A");
+  position: absolute;
+  left: 0;
+}
+
+.successText {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  text-align: center;
+  color: #000000;
+  max-width: 350px;
+  margin: 50px 0;
+
+  @media (min-width: 1200px) {
+    margin: 60px 0;
+  }
+}
+
+.buttons {
+  align-self: flex-end;
+  display: flex;
+  margin-top: 20px;
+
+  .button {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+  }
+
+  .buttonCancel {
+    margin-right: 45px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #7f8a94;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .buttonSend {
+    width: 186px;
+    padding: 22px 0;
+    outline: none;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #000000;
+
+    &:hover {
+      background: #000000;
+      color: #fff;
+    }
+
+    @media (min-width: 1200px) {
+      width: 250px;
+    }
+  }
+}

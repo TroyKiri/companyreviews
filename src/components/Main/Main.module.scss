@@ -1,0 +1,153 @@
+.main {
+  width: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 380px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 10px;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: 0;
+  }
+
+  h1 {
+    width: 100%;
+    margin: 23px 0 24px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000;
+
+    @media (min-width: 1200px) {
+      text-align: left;
+      margin: 66px 0 37px;
+    }
+  }
+}
+
+.recommendsWrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 34px;
+
+  @media (min-width: 1200px) {
+    width: 100%;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+}
+
+.recommends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+  }
+}
+
+.stars {
+  height: 30px;
+  width: 170px;
+  margin-bottom: 7px;
+
+  @media (min-width: 1200px) {
+    margin: 0;
+    margin-right: 25px;
+  }
+}
+
+.text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #000;
+
+  span {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000;
+  }
+}
+
+.logo {
+  margin-bottom: 38px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 44px;
+
+  @media (min-width: 1200px) {
+    max-width: 380px;
+    margin-bottom: 0;
+  }
+}
+
+.chartWrap {
+  height: 196px;
+  margin-bottom: 26px;
+
+  @media (min-width: 1200px) {
+    height: 207px;
+  }
+}
+
+.button {
+  width: 100%;
+  padding: 22px 0;
+  margin-bottom: 15px;
+  background: #ef233c;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover,
+  :focus,
+  :active {
+    background: #ff4960;
+  }
+}
+
+.buttonSort {
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration-line: underline;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+}

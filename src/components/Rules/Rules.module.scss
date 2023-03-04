@@ -1,0 +1,49 @@
+.rules {
+  width: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 10px;
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 0;
+  }
+
+  h1 {
+    margin: 23px 0 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000;
+
+    @media (min-width: 1200px) {
+        margin: 66px 0 26px;
+        text-align: left;
+      }
+  }
+
+  h2 {
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+  }
+
+  p {
+    margin-bottom: 18px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+  }
+}
