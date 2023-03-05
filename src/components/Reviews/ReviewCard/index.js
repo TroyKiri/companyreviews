@@ -6,39 +6,31 @@ export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, 
   return (
     <article className={`${s.card} ${single && s.cardSingle}`}>
       <figure className={s.figure}>
+        <Link href="/" className={s.title}>
+          {title}
+        </Link>
         <img src="/images/user_no_photo.png" alt="Фото пользователя" className={s.photo} />
-        <figcaption className={s.caption}>{nameUser}</figcaption>
+        <div className={s.wrap}>
+          <div className={s.rating}>
+            <Rating allowFraction={true} initialValue={ratings} readonly={true} />
+          </div>
+          <div className={s.infoWrap}>
+            <figcaption className={s.caption}>{nameUser}</figcaption>
+            <p className={s.date}>{date}</p>
+          </div>
+        </div>
       </figure>
-      <div className={s.wrap}>
-        <h2>{title}</h2>
-        <p className={s.date}>{date}</p>
-        <div className={s.rating}>
-          <Rating allowFraction={true} initialValue={ratings} size={31} readonly={true} />
-        </div>
-        <div className={s.inner}>
-          <h3 className={s.dignity}>достоинства:</h3>
-          <p className={s.text}>{dignity}</p>
-        </div>
-        <div className={s.inner}>
-          <h3 className={s.flaws}>недостатки:</h3>
-          <p className={s.text}>{flaws}</p>
-        </div>
-        <div className={s.inner}>
-          <h3>отзыв:</h3>
-          <p className={`${s.text} ${!single && s.hiddenText}`}>{text}</p>
-        </div>
-        {!single && (
-          <Link
-            className={s.button}
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              setId(id);
-            }}
-          >
-            читать весь отзыв
-          </Link>
-        )}
+      <div className={s.inner}>
+        <h3 className={s.dignity}>Достоинства</h3>
+        <p className={s.text}>{dignity}</p>
+      </div>
+      <div className={s.inner}>
+        <h3 className={s.flaws}>Недостатки</h3>
+        <p className={s.text}>{flaws}</p>
+      </div>
+      <div className={s.inner}>
+        <h3 className={s.reviewText}>Отзыв</h3>
+        <p className={`${s.text} ${!single && s.hiddenText}`}>{text}</p>
       </div>
     </article>
   );

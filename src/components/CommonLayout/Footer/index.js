@@ -6,9 +6,9 @@ export default function Footer({ setModal }) {
   return (
     <footer className={s.footer}>
       <div className={s.wrap}>
-        <p className={s.title}>правдивые отзывы.ру © 2023</p>
+        <p className={s.title}>Отзывы о компаниях © 2023</p>
         <Link href="/rules" className={s.link}>
-          правила
+          о нас
         </Link>
         <Link
           href="/"

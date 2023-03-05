@@ -1,48 +1,26 @@
-.main {
-  width: 100%;
-}
-
 .wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   max-width: 380px;
   margin: 0 auto;
   width: 100%;
   padding: 0 10px;
 
   @media (min-width: 1200px) {
-    max-width: 1200px;
+    max-width: 760px;
     padding: 0;
+    margin: 0;
   }
 }
 
 .summary {
-  position: relative;
-  width: 100%;
-  margin-bottom: 28px;
-  padding-left: 17px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid #E2E7EC;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17px;
-  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
   color: #000;
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 140px;
-    height: 3px;
-    bottom: 0;
-    left: 0;
-    background-color: #000;
-  }
-
-  @media (min-width: 1200px) {
-    margin-bottom: 43px;
-  }
 }
 
 .text {
@@ -53,4 +31,25 @@
   color: #7f8a94;
 }
 
+.buttonMore {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  width: 273px;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #000000;
 
+  &:hover,
+  :focus,
+  :active {
+    background: #000000;
+    color: #ffffff;
+  }
+}

@@ -13,6 +13,8 @@ import Feedback from '@/components/Forms/Feedback';
 import SingleReview from '@/components/SingleReview';
 import NewCommentForm from '@/components/Forms/NewCommentForm';
 
+import { COUNT_OF_REVIEWS_TO_DISPLAY } from '@/common/reviews/reviews';
+
 import s from '@/styles/Home.module.scss';
 
 export default function Home() {
@@ -26,6 +28,8 @@ export default function Home() {
   const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
 
   const [modal, setModal] = useState(null);
+
+  const [countToDisplay, setCountOfDisplay] = useState(COUNT_OF_REVIEWS_TO_DISPLAY);
 
   useEffect(() => {
     setTotalRating(reviews?.reduce((prevValue, review) => (prevValue += review.ratings), 0) / reviews.length || 0);
@@ -48,6 +52,7 @@ export default function Home() {
   }, [id]);
 
   const filterReviews = (grade) => {
+    setCountOfDisplay(COUNT_OF_REVIEWS_TO_DISPLAY);
     if (grade) {
       setRating(grade);
       setActiveFilterId(grade);
@@ -75,7 +80,9 @@ export default function Home() {
             <Main totalRating={totalRating} reviews={reviews} filterReviews={filterReviews} activeFilterId={activeFilterId} />
             <Info totalRating={totalRating} setModal={setModal} reviews={reviews} filterReviews={filterReviews} />
           </section>
-          <section ref={reviewsRef}>{!review && <Reviews reviews={reviewsToDisplay} setId={setId} />}</section>
+          <section ref={reviewsRef} className={s.reviewsWrap}>
+            {!review && <Reviews reviews={reviewsToDisplay} setId={setId} countToDisplay={countToDisplay} setCountOfDisplay={setCountOfDisplay} />}
+          </section>
           {review && <SingleReview review={review} setModal={setModal} />}
         </main>
       </CommonLayout>

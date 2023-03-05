@@ -1,3 +1,5 @@
+export const COUNT_OF_REVIEWS_TO_DISPLAY = 3;
+
 export const reviews = [
   {
     id: 1,
