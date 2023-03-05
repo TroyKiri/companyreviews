@@ -1,121 +1,53 @@
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { useRef } from 'react';
 
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Bar, getElementAtEvent } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie, getElementAtEvent } from 'react-chartjs-2';
 import { Rating } from 'react-simple-star-rating';
 
-import { reviews } from '@/common/reviews/reviews';
+import { options, labels, generateData } from './chartSettings';
+
 import s from './Main.module.scss';
 
-export default function Main({ setRating, setModal, setId }) {
-  ChartJS.register(CategoryScale, LinearScale, BarElement);
-
-  const [totalRating, setTotalRating] = useState();
-
-  const options = {
-    maintainAspectRatio: false,
-    responsive: true,
-    scales: {
-      x: {
-        stacked: true,
-        grid: {
-          display: false,
-        },
-        ticks: {
-          font: {
-            size: 16,
-            weight: 700,
-          },
-          color: '#676767',
-        },
-        border: {
-          display: false,
-        },
-      },
-      y: {
-        display: false,
-        stacked: true,
-      },
-    },
-    layout: {},
-    onHover: (event, chartElement) => {
-      if (chartElement.length == 1) {
-        event.native.target.style.cursor = 'pointer';
-      }
-    },
-  };
-
-  const labels = [1, 2, 3, 4, 5];
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        data: labels.map((item) => reviews.reduce((prevValue, review) => (review.ratings === item ? (prevValue += 1) : prevValue), 0)),
-        backgroundColor: '#FBD620',
-        borderRadius: 6,
-        cursor: 'pointer',
-      },
-      {
-        data: labels.map((item) => reviews.length - reviews.reduce((prevValue, review) => (review.ratings === item ? (prevValue += 1) : prevValue), 0)),
-        backgroundColor: '#F3F3F3',
-        borderRadius: 6,
-      },
-    ],
-  };
-
-  useEffect(() => {
-    setTotalRating(reviews.reduce((prevValue, review) => (prevValue += review.ratings), 0) / reviews.length);
-  }, []);
+export default function Main({ totalRating, reviews, filterReviews, activeFilterId }) {
+  ChartJS.register(Tooltip, Legend, ArcElement);
 
   const chartRef = useRef();
-  const onClick = (event) => {
-    setId(null);
-    setRating(getElementAtEvent(chartRef.current, event)[0].index + 1);
-    setTimeout(() => {
-      document.querySelector('#reviews').scrollIntoView({ behavior: 'smooth' });
-    }, 200);
-  };
 
   return (
-    <section className={s.main}>
-      <div className={s.wrap}>
-        <h1>LEOMAX.RU — интернет-магазин «Телевизионная Торговая Сеть» — отзывы</h1>
-        <div className={s.recommendsWrap}>
-          <div className={s.recommends}>
-            <div className={s.stars}>
+    <article className={s.article}>
+      <div className={s.innerWrap}>
+        <div className={s.mainContainer}>
+          <div className={s.titleContainer}>
+            <h1>LEOMAX.RU — отзывы</h1>
+            <p className={s.text}>Отзывы клиентов, сотрудников, отзывы о работодателях</p>
+          </div>
+          <div className={s.statistics}>
+            <div className={s.ratingContainer}>
+              <span className={s.grade}>{String(totalRating).replace('.', ',')}</span>
               <Rating allowFraction={true} initialValue={totalRating} size={31} readonly={true} />
             </div>
-            <p className={s.text}>
-              рекомендуют: <span>80%</span>
-            </p>
+            <p className={s.statisicsText}>{`${reviews?.length || 0} отзывов / 3235 просмотров`}</p>
           </div>
         </div>
-        <Link className={s.logo} href="https://www.leomax.ru/" target="_blank">
-          <img alt="Logo" src="/images/logo.png" />
-        </Link>
-        <div className={s.reviews}>
-          <div className={s.chartWrap}>
-            <Bar ref={chartRef} options={options} data={data} onClick={onClick} />
+        <div className={s.chartWrap}>
+          <p className={s.resultText}>Результаты отзывов</p>
+          <div className={s.chartInner}>
+            <Pie ref={chartRef} options={options} data={generateData(labels, reviews)} onClick={(e) => filterReviews(getElementAtEvent(chartRef.current, e)[0].index + 1)} />
           </div>
-          <button className={s.button} onClick={() => setModal('newReview')}>
-            добавить отзыв о компании
-          </button>
-          <button
-            className={s.buttonSort}
-            onClick={() => {
-              setId(null);
-              setRating(null);
-              setTimeout(() => {
-                document.querySelector('#reviews').scrollIntoView({ behavior: 'smooth' });
-              }, 200);
-            }}
-          >
-            все отзывы ({reviews.length})
-          </button>
+          <ul className={s.legendButtons}>
+            {labels.map((item) => (
+              <li key={item.grade}>
+                <button className={s.button} onClick={(e) => filterReviews(item.grade)} style={{fontWeight: activeFilterId === item.grade && 700}}>
+                  {item.label}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="8" fill={item.color} />
+                  </svg>
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </article>
   );
 }

@@ -1,0 +1,131 @@
+.article {
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    max-width: 420px;
+  }
+
+  .inner {
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 20px 20px 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 1200px) {
+      padding: 30px 20px 50px;
+      max-height: 420px;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 22px;
+    }
+
+    .logo {
+      margin-bottom: 30px;
+      width: 213px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .rating {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #000000;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      span {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+      }
+    }
+
+    .amountButton {
+      color: #000;
+      text-decoration: underline;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+
+      &:hover,
+      :active,
+      :focus {
+        opacity: 0.8;
+      }
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+      list-style-type: none;
+      margin: 45px 0 0;
+
+      .link {
+        background: #eaedf2;
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        color: #000;
+        margin-right: 6px;
+        margin-bottom: 6px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .button {
+    width: 100%;
+    padding: 22px 0;
+    margin-bottom: 15px;
+    background: #553fff;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 50px;
+
+    @media (min-width: 1200px) {
+      margin: 0;
+    }
+
+    &:hover,
+    :focus,
+    :active {
+      background: #7664ff;
+    }
+  }
+}

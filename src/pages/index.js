@@ -2,23 +2,34 @@ import Head from 'next/head';
 
 import CommonLayout from '@/components/CommonLayout';
 import Main from '@/components/Main';
+import Info from '@/components/Info';
 import Reviews from '@/components/Reviews';
 
 import { reviews } from '@/common/reviews/reviews';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Modal from '@/components/Modal';
 import NewReviewForm from '@/components/Forms/NewReviewForm';
 import Feedback from '@/components/Forms/Feedback';
 import SingleReview from '@/components/SingleReview';
 import NewCommentForm from '@/components/Forms/NewCommentForm';
 
+import s from '@/styles/Home.module.scss';
+
 export default function Home() {
+  const reviewsRef = useRef(null);
+  const [totalRating, setTotalRating] = useState(0);
+  const [activeFilterId, setActiveFilterId] = useState(null);
+
   const [id, setId] = useState(null);
   const [review, setReview] = useState(null);
   const [rating, setRating] = useState(null);
   const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
 
   const [modal, setModal] = useState(null);
+
+  useEffect(() => {
+    setTotalRating(reviews?.reduce((prevValue, review) => (prevValue += review.ratings), 0) / reviews.length || 0);
+  }, []);
 
   useEffect(() => {
     if (rating === null) {
@@ -36,6 +47,20 @@ export default function Home() {
       }, 200);
   }, [id]);
 
+  const filterReviews = (grade) => {
+    if (grade) {
+      setRating(grade);
+      setActiveFilterId(grade);
+    } else {
+      setRating(null);
+      setActiveFilterId(null);
+    }
+    setId(null);
+    setTimeout(() => {
+      reviewsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+  };
+
   return (
     <>
       <Head>
@@ -46,8 +71,11 @@ export default function Home() {
       </Head>
       <CommonLayout setModal={setModal}>
         <main>
-          <Main setRating={setRating} setModal={setModal} setId={setId} />
-          {!review && <Reviews reviews={reviewsToDisplay} setId={setId} />}
+          <section className={s.inner}>
+            <Main totalRating={totalRating} reviews={reviews} filterReviews={filterReviews} activeFilterId={activeFilterId} />
+            <Info totalRating={totalRating} setModal={setModal} reviews={reviews} filterReviews={filterReviews} />
+          </section>
+          <section ref={reviewsRef}>{!review && <Reviews reviews={reviewsToDisplay} setId={setId} />}</section>
           {review && <SingleReview review={review} setModal={setModal} />}
         </main>
       </CommonLayout>
