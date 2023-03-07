@@ -2,11 +2,11 @@ import { Rating } from 'react-simple-star-rating';
 import Link from 'next/link';
 import s from './ReviewCard.module.scss';
 
-export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, text, single, ratings, setId }) {
+export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, text, single, ratings }) {
   return (
     <article className={`${s.card} ${single && s.cardSingle}`}>
       <figure className={s.figure}>
-        <Link href="/" className={s.title}>
+        <Link href={`/${id}`} className={s.title}>
           {title}
         </Link>
         <img src="/images/user_no_photo.png" alt="Фото пользователя" className={s.photo} />

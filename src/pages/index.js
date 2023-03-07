@@ -10,7 +10,6 @@ import { useState, useEffect, useRef } from 'react';
 import Modal from '@/components/Modal';
 import NewReviewForm from '@/components/Forms/NewReviewForm';
 import Feedback from '@/components/Forms/Feedback';
-import SingleReview from '@/components/SingleReview';
 import NewCommentForm from '@/components/Forms/NewCommentForm';
 
 import { COUNT_OF_REVIEWS_TO_DISPLAY } from '@/common/reviews/reviews';
@@ -22,8 +21,6 @@ export default function Home() {
   const [totalRating, setTotalRating] = useState(0);
   const [activeFilterId, setActiveFilterId] = useState(null);
 
-  const [id, setId] = useState(null);
-  const [review, setReview] = useState(null);
   const [rating, setRating] = useState(null);
   const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
 
@@ -43,14 +40,6 @@ export default function Home() {
     }
   }, [rating]);
 
-  useEffect(() => {
-    id ? setReview(reviews.find((item) => item.id == id)) : setReview(null);
-    id &&
-      setTimeout(() => {
-        document.querySelector('#singleReview').scrollIntoView({ behavior: 'smooth' });
-      }, 200);
-  }, [id]);
-
   const filterReviews = (grade) => {
     setCountOfDisplay(COUNT_OF_REVIEWS_TO_DISPLAY);
     if (grade) {
@@ -60,7 +49,6 @@ export default function Home() {
       setRating(null);
       setActiveFilterId(null);
     }
-    setId(null);
     setTimeout(() => {
       reviewsRef.current.scrollIntoView({ behavior: 'smooth' });
     }, 200);
@@ -81,9 +69,8 @@ export default function Home() {
             <Info totalRating={totalRating} setModal={setModal} reviews={reviews} filterReviews={filterReviews} />
           </section>
           <section ref={reviewsRef} className={s.reviewsWrap}>
-            {!review && <Reviews reviews={reviewsToDisplay} setId={setId} countToDisplay={countToDisplay} setCountOfDisplay={setCountOfDisplay} />}
+            <Reviews reviews={reviewsToDisplay} countToDisplay={countToDisplay} setCountOfDisplay={setCountOfDisplay} />
           </section>
-          {review && <SingleReview review={review} setModal={setModal} />}
         </main>
       </CommonLayout>
       {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <NewCommentForm setModal={setModal} />}</Modal>}
