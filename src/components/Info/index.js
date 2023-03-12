@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import s from './Info.module.scss';
 
-export default function Info({ totalRating, setModal, reviews, filterReviews }) {
+export default function Info({ totalRating, setModal, reviews, filterReviews, single }) {
   return (
-    <article className={s.article}>
+    <article className={`${s.article} ${single && s.singleArticle}`}>
       <div className={s.inner}>
         <h2>Leomax.ru</h2>
         <Link className={s.logo} href="https://www.leomax.ru/" target="_blank">
@@ -14,7 +14,7 @@ export default function Info({ totalRating, setModal, reviews, filterReviews }) 
           Рейтинг: <span>{`${String(totalRating).replace('.', ',')} из 5`}</span>
         </p>
         <p className={s.rating}>
-          на основании <button className={s.amountButton} onClick={() => filterReviews(null)}>{`${reviews?.length || 0} отзывов`}</button>
+          на основании {single ? <Link className={s.amountButton} href='/'>{`${reviews?.length || 0} отзывов`}</Link> : <button className={s.amountButton} onClick={() => filterReviews(null)}>{`${reviews?.length || 0} отзывов`}</button>}
         </p>
         <ul className={s.links}>
           <li className={s.link}>Бытовая техника</li>

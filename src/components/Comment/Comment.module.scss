@@ -1,6 +1,17 @@
 .comment {
   display: flex;
   flex-direction: column;
+  padding: 45px 20px 0;
+  border-top: 1px solid #D6DAE1;
+
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 45px 32px 0;
+  }
 }
 
 .wrap {
@@ -88,7 +99,7 @@
   align-items: flex-start;
 
   @media (min-width: 1200px) {
-    width: 1090px;
+    width: 608px;
     align-self: flex-end;
   }
 
@@ -123,7 +134,7 @@
       border-radius: 4px;
 
       font-weight: 600;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 17px;
       color: #000;
       padding: 10px;
@@ -153,7 +164,7 @@
       }
 
       .buttonSend {
-        width: 158px;
+        width: 130px;
         padding: 12px 0;
         outline: none;
         border: 1px solid #000000;

@@ -101,7 +101,7 @@
 
 .inner {
   @media (min-width: 1200px) {
-    max-width: 582px;
+    width: 582px;
     align-self: flex-end;
   }
 }
@@ -177,4 +177,10 @@
       line-clamp: 3;
     }
   }
+}
+
+.cardSingle {
+  box-shadow: unset;
+  margin-bottom: 0;
+  padding-bottom: 34px;
 }

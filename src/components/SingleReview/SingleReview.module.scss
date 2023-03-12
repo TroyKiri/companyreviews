@@ -1,5 +1,11 @@
 .main {
+  margin: 29px auto 100px;
   width: 100%;
+  
+  @media (min-width: 1200px) {
+    max-width: 760px;
+    margin: 0 0 100px;
+  }
 }
 
 .wrap {
@@ -9,7 +15,8 @@
   max-width: 380px;
   margin: 0 auto;
   width: 100%;
-  padding: 0 10px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 
   @media (min-width: 1200px) {
     max-width: 1200px;
@@ -18,145 +25,121 @@
   }
 }
 
-.grade {
+.buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
+  align-self: flex-start;
+  padding: 0 20px;
 
   @media (min-width: 1200px) {
     flex-direction: row;
-    margin-bottom: 60px;
-  }
-
-  .text {
-    margin-bottom: 16px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    text-transform: uppercase;
-    color: #020202;
-
-    @media (min-width: 1200px) {
-      margin-bottom: 0;
-      margin-right: 20px;
-    }
-  }
-
-  .buttons {
-    display: flex;
-  }
-
-  .button {
-    cursor: pointer;
-    background: #ffffff;
-    border-radius: 4px;
-    width: 80px;
-    padding: 12px 0;
-    outline: none;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-
-    & span {
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding-left: 28px;
-    }
-  }
-
-  .buttonYes {
-    margin-right: 10px;
-    border: 1px solid #0ab806;
-    color: #0ab806;
-
-    & span::before {
-      content: url("data:image/svg+xml,%3Csvg width='21' height='23' viewBox='0 0 21 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.8324 6.88303H15.8182C16.3087 5.52914 16.7857 3.53994 16.1438 1.9799C15.7653 1.05999 15.0456 0.405755 14.0626 0.088447C13.8811 0.029597 13.6924 0 13.5022 0C12.223 0 11.0653 1.24342 9.37366 4.43543C8.61355 5.87088 7.51953 7.07954 6.74905 7.73137C6.42205 8.00806 6.16073 8.29027 5.94884 8.568C5.36467 7.70349 4.37331 7.13392 3.2506 7.13392C1.45835 7.13392 0 8.5859 0 10.3703V19.7636C0 21.5484 1.45835 23 3.2506 23C4.42793 23 5.458 22.3712 6.02834 21.4355C6.79295 22.3743 7.95921 22.9763 9.26512 22.9763H17.2233C20.5095 22.9763 21 20.8645 21 19.606V11.0332C21.0003 8.74489 19.1307 6.88303 16.8324 6.88303ZM4.42724 19.7636C4.42724 20.4096 3.89941 20.9351 3.25095 20.9351C2.60214 20.9351 2.07432 20.4096 2.07432 19.7636V10.3703C2.07432 9.72435 2.60214 9.19883 3.25095 9.19883C3.89941 9.19883 4.42724 9.72435 4.42724 10.3703V19.7636ZM18.9264 19.606C18.9264 20.3703 18.804 20.9113 17.2236 20.9113H9.26547C8.11096 20.9113 7.17145 19.9763 7.17145 18.8268V11.0332L7.17421 11.0005L7.16695 10.9399C7.16488 10.9069 7.13031 10.1187 8.09195 9.30517C9.01002 8.52808 10.3108 7.094 11.2081 5.39871C12.6364 2.704 13.318 2.17986 13.5029 2.08074C13.8621 2.21427 14.0864 2.4273 14.2243 2.76251C14.6713 3.84865 14.1099 5.93696 13.3246 7.43849L12.5354 8.9476H16.832C17.9869 8.9476 18.9264 9.883 18.9264 11.0328V19.606Z' fill='%230AB806'/%3E%3C/svg%3E%0A");
-      position: absolute;
-      left: 0;
-    }
-
-    &:hover,
-    :focus,
-    :active {
-      background-color: #e4fde4;
-    }
-  }
-
-  .buttonNo {
-    border: 1px solid #ef233c;
-    color: #ef233c;
-
-    & span::before {
-      content: url("data:image/svg+xml,%3Csvg width='21' height='23' viewBox='0 0 21 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.8324 16.117H15.8182C16.3087 17.4709 16.7857 19.4601 16.1438 21.0201C15.7653 21.94 15.0456 22.5942 14.0626 22.9116C13.8811 22.9704 13.6924 23 13.5022 23C12.223 23 11.0653 21.7566 9.37366 18.5646C8.61355 17.1291 7.51953 15.9205 6.74905 15.2686C6.42205 14.9919 6.16073 14.7097 5.94884 14.432C5.36467 15.2965 4.37331 15.8661 3.2506 15.8661C1.45835 15.8661 0 14.4141 0 12.6297V3.2364C0 1.45163 1.45835 0 3.2506 0C4.42793 0 5.458 0.628767 6.02834 1.56451C6.79295 0.625669 7.95921 0.0237484 9.26512 0.0237484H17.2233C20.5095 0.0237484 21 2.13546 21 3.39402V11.9668C21.0003 14.2551 19.1307 16.117 16.8324 16.117ZM4.42724 3.2364C4.42724 2.59043 3.89941 2.06491 3.25095 2.06491C2.60214 2.06491 2.07432 2.59043 2.07432 3.2364V12.6297C2.07432 13.2757 2.60214 13.8012 3.25095 13.8012C3.89941 13.8012 4.42724 13.2757 4.42724 12.6297V3.2364ZM18.9264 3.39402C18.9264 2.62966 18.804 2.08866 17.2236 2.08866H9.26547C8.11096 2.08866 7.17145 3.02372 7.17145 4.17318V11.9668L7.17421 11.9995L7.16695 12.0601C7.16488 12.0931 7.13031 12.8813 8.09195 13.6948C9.01002 14.4719 10.3108 15.906 11.2081 17.6013C12.6364 20.296 13.318 20.8201 13.5029 20.9193C13.8621 20.7857 14.0864 20.5727 14.2243 20.2375C14.6713 19.1514 14.1099 17.063 13.3246 15.5615L12.5354 14.0524H16.832C17.9869 14.0524 18.9264 13.117 18.9264 11.9672V3.39402Z' fill='%23EF233C'/%3E%3C/svg%3E%0A");
-      position: absolute;
-      left: 0;
-    }
-
-    &:hover,
-    :focus,
-    :active {
-      background-color: #fff3f5;
-    }
+    align-items: center;
+    width: 608px;
+    align-self: flex-end;
+    padding-right: 26px;
+    margin-bottom: 45px;
+    padding: 0;
   }
 }
 
-.commentsWrap {
+.button {
+  min-height: 30px;
+  margin-bottom: 26px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding-left: 28px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #000000;
+
+  &:hover,
+  :focus,
+  :active {
+    color: #7f8a94;
+  }
+
+  &::before {
+    content: url("data:image/svg+xml,%3Csvg width='22' height='16' viewBox='0 0 22 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.3333 10.0654C21.3317 11.6388 20.7171 13.1473 19.6245 14.2599C18.5318 15.3725 17.0503 15.9983 15.5051 16H10.3875V14.5528H15.5051C16.6739 14.5528 17.7948 14.08 18.6213 13.2385C19.4478 12.3969 19.9121 11.2555 19.9121 10.0654C19.9121 8.87524 19.4478 7.73385 18.6213 6.89229C17.7948 6.05074 16.6739 5.57796 15.5051 5.57796H2.72144L5.77105 8.6852L4.76589 9.70871L0 4.85436L4.76733 0L5.77105 1.02351L2.72 4.13075H15.5051C17.0503 4.13244 18.5318 4.75823 19.6245 5.87082C20.7171 6.98342 21.3317 8.49193 21.3333 10.0654Z' fill='black'/%3E%3C/svg%3E%0A");
+    position: absolute;
+    left: 0;
+  }
+
   @media (min-width: 1200px) {
-    width: 100%;
+    margin-bottom: 0;
+    margin-right: 45px;
+  }
+}
+
+.linkWrap {
+  margin-bottom: 40px;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+
+  .link {
+    margin-right: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    color: #000000;
+
+    &:hover,
+    :focus,
+    :active {
+      color: #7f8a94;
+    }
+  }
+
+  span {
+    padding: 5px 14px;
+    background: #553fff;
+    border-radius: 30px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 0;
+    padding: 0;
   }
 }
 
 .comments {
+  padding-top: 41px;
+  border-top: 1px solid #D6DAE1;
   display: flex;
   flex-direction: column;
   margin-bottom: 32px;
 
   @media (min-width: 1200px) {
     width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 
   .title {
-    margin-bottom: 16px;
+    margin-left: 20px;
+    margin-bottom: 31px;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
     text-transform: uppercase;
     color: #020202;
 
     @media (min-width: 1200px) {
-      margin-bottom: 0;
-    }
-  }
-
-  .button {
-    cursor: pointer;
-    outline: none;
-    border: 1px solid #7f8a94;
-    border-radius: 4px;
-    background-color: #fff;
-    width: 270px;
-    padding: 12px 0;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    text-transform: uppercase;
-    color: #7f8a94;
-
-    &:hover,
-    :focus,
-    :active {
-      border: 1px solid #000000;
-      border-radius: 4px;
-      color: #000000;
+      margin-bottom: 44px;
+      margin-left: 40px;
     }
   }
 }

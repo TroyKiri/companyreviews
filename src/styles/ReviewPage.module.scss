@@ -1,0 +1,8 @@
+.section {
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 18px auto 0;
+  }
+}
