@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import s from './Info.module.scss';
 
-export default function Info({ totalRating, setModal, reviews, filterReviews, single }) {
+export default function Info({ rating, totalRating, setModal, reviews, filterReviews, single, categories, activeCategoryId }) {
   return (
     <article className={`${s.article} ${single && s.singleArticle}`}>
       <div className={s.inner}>
@@ -14,15 +14,29 @@ export default function Info({ totalRating, setModal, reviews, filterReviews, si
           Рейтинг: <span>{`${String(totalRating).replace('.', ',')} из 5`}</span>
         </p>
         <p className={s.rating}>
-          на основании {single ? <Link className={s.amountButton} href='/'>{`${reviews?.length || 0} отзывов`}</Link> : <button className={s.amountButton} onClick={() => filterReviews(null)}>{`${reviews?.length || 0} отзывов`}</button>}
+          на основании{' '}
+          {single ? (
+            <Link className={s.amountButton} href="/">{`${reviews?.length || 0} отзывов`}</Link>
+          ) : (
+            <button className={s.amountButton} onClick={() => filterReviews(null)}>{`${reviews?.length || 0} отзывов`}</button>
+          )}
         </p>
         <ul className={s.links}>
-          <li className={s.link}>Бытовая техника</li>
-          <li className={s.link}>Одежда и аксессуары</li>
-          <li className={s.link}>Украшения</li>
-          <li className={s.link}>Красота и здоровье</li>
-          <li className={s.link}>Обувь</li>
-          <li className={s.link}>Товары для кухни</li>
+          {categories.map((category, index) => (
+            <li className={`${s.link} ${activeCategoryId === category.id && s.linkActive}`} key={index}>
+              {single ? (
+                <Link href={`/?category=${category.id}`}>{category.name}</Link>
+              ) : (
+                <button
+                  onClick={() => {
+                    activeCategoryId === category.id ? filterReviews(rating, null) : filterReviews(rating, category.id);
+                  }}
+                >
+                  {category.name}
+                </button>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
       <button className={s.button} onClick={() => setModal('newReview')}>

@@ -85,18 +85,38 @@
       margin: 45px 0 0;
 
       .link {
-        background: #eaedf2;
-        border-radius: 20px;
-        padding: 6px 14px;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        color: #000;
         margin-right: 6px;
         margin-bottom: 6px;
 
         &:last-child {
           margin-right: 0;
+        }
+
+        a,
+        button {
+          display: block;
+          cursor: pointer;
+          color: #000;
+          border: none;
+          outline: none;
+          background: #eaedf2;
+          border-radius: 20px;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          padding: 6px 14px;
+
+          &:hover,
+          :focus,
+          :active {
+            outline: 1px solid #000;
+          }
+        }
+      }
+
+      .linkActive {
+        button {
+          border: 1px solid #000;
         }
       }
     }

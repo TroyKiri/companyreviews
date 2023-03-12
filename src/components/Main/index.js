@@ -8,7 +8,7 @@ import { options, labels, generateData } from './chartSettings';
 
 import s from './Main.module.scss';
 
-export default function Main({ totalRating, reviews, filterReviews, activeFilterId }) {
+export default function Main({ totalRating, reviews, filterReviews, activeFilterId, activeCategoryId }) {
   ChartJS.register(Tooltip, Legend, ArcElement);
 
   const chartRef = useRef();
@@ -32,12 +32,12 @@ export default function Main({ totalRating, reviews, filterReviews, activeFilter
         <div className={s.chartWrap}>
           <p className={s.resultText}>Результаты отзывов</p>
           <div className={s.chartInner}>
-            <Pie ref={chartRef} options={options} data={generateData(labels, reviews)} onClick={(e) => filterReviews(getElementAtEvent(chartRef.current, e)[0].index + 1)} />
+            <Pie ref={chartRef} options={options} data={generateData(labels, reviews)} onClick={(e) => filterReviews(getElementAtEvent(chartRef.current, e)[0].index + 1, activeCategoryId)} />
           </div>
           <ul className={s.legendButtons}>
             {labels.map((item) => (
               <li key={item.grade}>
-                <button className={s.button} onClick={(e) => filterReviews(item.grade)} style={{fontWeight: activeFilterId === item.grade && 700}}>
+                <button className={s.button} onClick={(e) => filterReviews(item.grade, activeCategoryId)} style={{ fontWeight: activeFilterId === item.grade && 700 }}>
                   {item.label}
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="8" cy="8" r="8" fill={item.color} />

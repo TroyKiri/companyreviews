@@ -19,12 +19,14 @@ export default function SingleReview({ review, setModal, countOfReviews }) {
             <span>{countOfReviews}</span>
           </div>
         </div>
-        <div className={s.comments}>
-          <h3 className={s.title}>Комментарии к отзыву (2)</h3>
-          {review?.comments?.map((comment, index) => (
-            <Comment key={index} comment={comment} />
-          ))}
-        </div>
+        {!!review?.comments?.length && (
+          <div className={s.comments}>
+            <h3 className={s.title}>Комментарии к отзыву ({review?.comments?.length})</h3>
+            {review?.comments?.map((comment, index) => (
+              <Comment key={index} comment={comment} />
+            ))}
+          </div>
+        )}
       </div>
     </article>
   );

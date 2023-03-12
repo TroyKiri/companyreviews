@@ -12,11 +12,11 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 import SingleReview from '@/components/SingleReview';
 
-import { reviews } from '@/common/reviews/reviews';
+import { reviews, categories } from '@/common/reviews/reviews';
 
 import s from '@/styles/ReviewPage.module.scss';
 
-export default function ReviewPage({ reviews }) {
+export default function ReviewPage({ reviews, categories }) {
   const router = useRouter();
 
   const [modal, setModal] = useState(null);
@@ -37,9 +37,6 @@ export default function ReviewPage({ reviews }) {
       setRating(null);
       setActiveFilterId(null);
     }
-    // setTimeout(() => {
-    //   reviewsRef.current.scrollIntoView({ behavior: 'smooth' });
-    // }, 200);
   };
 
   return (
@@ -55,7 +52,7 @@ export default function ReviewPage({ reviews }) {
           <Breadcrumbs review={review} nameOfHomePage="LEOMAX.RU — отзывы" />
           <section className={s.section}>
             {review && <SingleReview review={review} setModal={setModal} countOfReviews={reviews.length} />}
-            <Info totalRating={totalRating} setModal={setModal} reviews={reviews} filterReviews={filterReviews} single />
+            <Info totalRating={totalRating} setModal={setModal} reviews={reviews} filterReviews={filterReviews} single categories={categories} />
           </section>
         </main>
       </CommonLayout>
@@ -68,6 +65,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       reviews,
+      categories,
     },
   };
 };
