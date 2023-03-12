@@ -97,7 +97,6 @@
           display: block;
           cursor: pointer;
           color: #000;
-          border: none;
           outline: none;
           background: #eaedf2;
           border-radius: 20px;
@@ -105,11 +104,12 @@
           font-size: 12px;
           line-height: 15px;
           padding: 6px 14px;
+          border: 1px solid transparent;
 
           &:hover,
           :focus,
           :active {
-            outline: 1px solid #000;
+            border: 1px solid #000;
           }
         }
       }
